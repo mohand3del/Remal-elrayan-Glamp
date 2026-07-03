@@ -66,8 +66,8 @@ export default function Accommodations({
       title: "Geo-Dome Deluxe Tent",
       subTitle: "360° COSMIC PORTAL VIEW • BB BASIS",
       description: "Nestled beautifully against premium dunes. Crafted with timber-frame architecture, featuring panoramic portals that draw the scenic Fayoum desert sky directly inside.",
-      imageUrl: "https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=1200&q=80",
-      interiorImageUrl: "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1200&q=80",
+      imageUrl: "/images/dome-room-exterior.jpeg",
+      interiorImageUrl: "/images/dome-room-interior.jpeg",
       maxOccupancy: 3,
       amenities: [
         "Private Star Gazing Ceiling Opening",
@@ -178,8 +178,8 @@ export default function Accommodations({
       title: "Geo-Dome Suite Tent",
       subTitle: "MAJESTIC DUNE RETREAT • BB BASIS",
       description: "Extra spacious geodesic layout offering scenic lounge comfort. Seamlessly combines Bedouin heritage touches with modern luxury components and an unparalleled panorama.",
-      imageUrl: "https://images.unsplash.com/photo-1533619239203-3a78cfd298bb?auto=format&fit=crop&w=1200&q=80",
-      interiorImageUrl: "https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=1200&q=80",
+      imageUrl: "/images/dome-suite-night-exterior.jpeg",
+      interiorImageUrl: "/images/dome-suite-lake-interior.jpeg",
       maxOccupancy: 4,
       amenities: [
         "Private Luxury Outdoor Jacuzzi",
@@ -290,8 +290,8 @@ export default function Accommodations({
       title: "Safari Suite Tent",
       subTitle: "EPIC WILD SAFARI TERRACE • BB BASIS",
       description: "Our signature elite glamping mansion. Crafted from organic double-layered canvas platforms, featuring ultra-luxurious lounges and a starlit outdoor terrace.",
-      imageUrl: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=1200&q=80",
-      interiorImageUrl: "https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&w=1200&q=80",
+      imageUrl: "/images/safari-suite-exterior.jpeg",
+      interiorImageUrl: "/images/safari-suite-interior.jpeg",
       maxOccupancy: 5,
       amenities: [
         "Private Luxury Outdoor Jacuzzi",

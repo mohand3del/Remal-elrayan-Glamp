@@ -17,110 +17,111 @@ interface GalleryImage {
   };
 }
 
+const createTranslations = (title: string, desc: string) => ({
+  en: { title, desc },
+  ar: { title, desc },
+  es: { title, desc },
+  fr: { title, desc },
+  de: { title, desc },
+  ja: { title, desc },
+});
+
 const galleryData: GalleryImage[] = [
   {
     id: "stay-1",
-    url: "https://images.unsplash.com/photo-1540518614846-7eded433c457?auto=format&fit=crop&w=1200&q=80",
+    url: "/images/dome-room-interior.jpeg",
     category: "stays",
-    translations: {
-      en: { title: "Geo-Dome Suite Interior", desc: "Plush Bedouin woven textiles blending with contemporary luxury comforts." },
-      ar: { title: "التصميم الداخلي لجناح القبة", desc: "منسوجات بدوية فاخرة ممتزجة مع وسائل الراحة العصرية المعاصرة." },
-      es: { title: "Interior de Suite Geo-Dome", desc: "Tejidos beduinos de felpa que se mezclan con comodidades de lujo contemporáneo." },
-      fr: { title: "Intérieur de la Suite Géo-Dôme", desc: "Textiles bédouins moelleux s'alliant au confort du luxe contemporain." },
-      de: { title: "Geo-Dome Suite Innenraum", desc: "Feine beduinische Textilien verschmelzen mit zeitgenössischem Luxuskomfort." },
-      ja: { title: "ジオデシック・ドーム・スイート内観", desc: "贅を尽くしたベドウィン織物と現代的なラグジュアリーアメニティの融合。" }
-    }
-  },
-  {
-    id: "nature-1",
-    url: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=1200&q=80",
-    category: "nature",
-    translations: {
-      en: { title: "Magic Wadi El Rayan Lakes", desc: "The deep sapphire waters contrasting beautifully with the golden desert dunes." },
-      ar: { title: "بحيرات وادي الريان الساحرة", desc: "المياه الياقوتية العميقة تتباين بشكل رائع مع الكثبان الرملية الذهبية." },
-      es: { title: "Lagos Mágicos de Wadi El Rayan", desc: "Las profundas aguas de zafiro contrastan bellamente con las dunas doradas." },
-      fr: { title: "Lacs Magiques de Wadi El Rayan", desc: "Les eaux saphir profondes contrastant magnifiquement avec les dunes d'or." },
-      de: { title: "Die magischen Seen von Wadi El Rayan", desc: "Tief saphirblaue Gewässer im wunderschönen Kontrast zu den goldenen Dünen." },
-      ja: { title: "神秘のワディ・エル・ラヤン湖", desc: "黄金に輝く砂丘と、深く澄んだサファイアブルーの湖水が織りなす対比美。" }
-    }
-  },
-  {
-    id: "cosmos-1",
-    url: "https://images.unsplash.com/photo-1533619239203-3a78cfd298bb?auto=format&fit=crop&w=1200&q=80",
-    category: "cosmos",
-    translations: {
-      en: { title: "Domes Under the Galaxy", desc: "A mesmerizing long exposure capturing the Milky Way arching over our stargazing domes." },
-      ar: { title: "القباب تحت مجرة درب التبانة", desc: "تعريض ضوئي طويل مذهل يصور مجرة درب التبانة وهي تقوس فوق قباب رصد النجوم." },
-      es: { title: "Domos bajo la Galaxia", desc: "Una fascinante exposición prolongada que captura la Vía Láctea sobre nuestros domos." },
-      fr: { title: "Dômes sous la Voie Lactée", desc: "Une longue exposition fascinante capturant la Voie Lactée au-dessus de nos dômes." },
-      de: { title: "Geodome unter der Milchstraße", desc: "Eine faszinierende Langzeitbelichtung der Milchstraße über unseren Kuppeln." },
-      ja: { title: "天の川を仰ぐドーム", desc: "天体観測ドームの真上に広がる、息をのむほど美しい銀河のアーチ。" }
-    }
-  },
-  {
-    id: "dining-1",
-    url: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1200&q=80",
-    category: "dining",
-    translations: {
-      en: { title: "Lummayya Fireside Dinners", desc: "Gather around the artisan campfire for authentic bedouin meals under the starlit sky." },
-      ar: { title: "عشاء كامبفاير لومايا", desc: "تجمع حول موقد النار البدوي الأصيل لتناول وجبات بدوية شهية تحت النجوم." },
-      es: { title: "Cenas junto al fuego en Lummayya", desc: "Reúnase alrededor de la hoguera para disfrutar de comidas beduinas auténticas bajo las estrellas." },
-      fr: { title: "Dîners au coin du feu à Lummayya", desc: "Rassemblez-vous autour du feu de camp pour de délicieux repas bédouins sous les étoiles." },
-      de: { title: "Lagerfeuer-Dinner im Lummayya", desc: "Kommen Sie am offenen Feuer zusammen für traditionelle Beduinen-Mahlzeiten." },
-      ja: { title: "ルフマヤ・ファイヤーサイド・ディナー", desc: "星空の下、パチパチと燃える炎を囲みながら味わう伝統的なベドウィン料理。" }
-    }
+    translations: createTranslations("Dome Room Interior", "A warm twin-bed setup inside one of the camp's signature desert domes.")
   },
   {
     id: "stay-2",
-    url: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=1200&q=80",
+    url: "/images/dome-room-exterior.jpeg",
     category: "stays",
-    translations: {
-      en: { title: "Safari Suite Exterior Deck", desc: "Spacious private teakwood deck equipped with premium relaxation lounges." },
-      ar: { title: "تراس جناح السفاري الخارجي", desc: "تراس واسع خاص مصنوع من خشب التيك ومجهز بصالونات استرخاء ممتازة." },
-      es: { title: "Terraza Exterior de Suite Safari", desc: "Amplia terraza privada de madera de teca equipada con salones de relajación premium." },
-      fr: { title: "Terrasse Extérieure de la Suite Safari", desc: "Grande terrasse privée en bois de teck équipée de salons de détente haut de gamme." },
-      de: { title: "Safari Suite Außenterrasse", desc: "Großzügiges privates Teakholz-Deck, perfekt ausgestattet mit Premium-Liegen." },
-      ja: { title: "サファリ・スイート・屋外ウッドデッキ", desc: "極上のリラクゼーションを約束する、最高級チーク材を使用したプライベートテラス。" }
-    }
+    translations: createTranslations("Dome Room Exterior", "A private wood deck and dome front set directly into the open desert.")
+  },
+  {
+    id: "stay-3",
+    url: "/images/dome-suite-night-exterior.jpeg",
+    category: "stays",
+    translations: createTranslations("Dome Suite by Night", "The suite glows after dark with its deck, lounge seating, and private outdoor space.")
+  },
+  {
+    id: "stay-4",
+    url: "/images/safari-suite-exterior.jpeg",
+    category: "stays",
+    translations: createTranslations("Safari Suite Exterior", "A chalet-style suite with a private sitting area facing the sand and lake horizon.")
+  },
+  {
+    id: "nature-1",
+    url: "/images/lake-sunrise-view.jpeg",
+    category: "nature",
+    translations: createTranslations("Lake Sunrise View", "Morning light over Wadi El Rayan creates one of the camp's defining panoramas.")
   },
   {
     id: "nature-2",
-    url: "https://images.unsplash.com/photo-1531266752426-aad472b7bbf4?auto=format&fit=crop&w=1200&q=80",
+    url: "/images/sunrise-cloudscape.jpeg",
     category: "nature",
-    translations: {
-      en: { title: "Sahara Golden Dunes", desc: "Endless ripples of premium wind-sculpted sand in the Faiyum oasis protectorate." },
-      ar: { title: "الكثبان الرملية الذهبية بالصحراء", desc: "تموجات لا نهاية لها من الرمال الذهبية التي نحتتها الرياح في محمية فيوم." },
-      es: { title: "Dunas Doradas del Sahara", desc: "Ondulaciones infinitas de arena esculpida por el viento en el oasis de Fayoum." },
-      fr: { title: "Dunes Dorées du Sahara", desc: "Ondulations infinies de sable sculpté par le vent dans la réserve de l'oasis de Fayoum." },
-      de: { title: "Goldene Dünen der Sahara", desc: "Endlose, vom Wind geformte Sandwellen im Naturschutzgebiet der Oase Fayoum." },
-      ja: { title: "サハラに刻まれる黄金の砂紋", desc: "ファイユーム保護区に広がる、風が描き出す終わりなき砂の芸術。" }
-    }
+    translations: createTranslations("Fayoum Sunrise Clouds", "Big desert skies turn each sunrise into a dramatic arrival moment.")
   },
   {
-    id: "cosmos-2",
-    url: "https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1200&q=80",
-    category: "cosmos",
-    translations: {
-      en: { title: "Celestial Astronomy Observatory", desc: "Embark on guided star discovery tours with our computer-guided professional telescopes." },
-      ar: { title: "مرصد علم الفلك السماوي", desc: "انطلق في جولات إرشادية لاكتشاف النجوم باستخدام تلسكوباتنا المهنية الموجهة بالكمبيوتر." },
-      es: { title: "Observatorio de Astronomía Celeste", desc: "Embárquese en recorridos guiados por las estrellas con nuestros telescopios de precisión." },
-      fr: { title: "Observatoire Astronomique Céleste", desc: "Partez pour des visites guidées d'observation des étoiles avec nos télescopes de pointe." },
-      de: { title: "Himmlisches Astronomie-Observatorium", desc: "Erleben Sie geführte Sternenbeobachtungen mit unseren computergesteuerten Profiteleskopen." },
-      ja: { title: "天体観測・スターゲイジング体験", desc: "コンピューター制御のプロ用望遠鏡で、神秘的な夜空の星座を巡るガイドツアー。" }
-    }
+    id: "nature-3",
+    url: "/images/boardwalk-lake-view.jpeg",
+    category: "nature",
+    translations: createTranslations("Boardwalk to the Lake", "The camp opens directly onto lake views, pathways, and soft desert light.")
+  },
+  {
+    id: "nature-4",
+    url: "/images/sunrise-golden-lake.jpeg",
+    category: "nature",
+    translations: createTranslations("Golden Horizon", "Sunrise across the water and dunes gives the retreat its quiet cinematic mood.")
+  },
+  {
+    id: "dining-1",
+    url: "/images/campfire-night.jpeg",
+    category: "dining",
+    translations: createTranslations("Campfire Gathering", "Guests unwind around the fire after sunset with the lake and dunes in the background.")
   },
   {
     id: "dining-2",
-    url: "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=1200&q=80",
+    url: "/images/lummayya-food-plating.jpeg",
     category: "dining",
-    translations: {
-      en: { title: "Lummayya Outdoor Dining Lounge", desc: "Experience gourmet local flavors overlooking the panoramic desert vistas." },
-      ar: { title: "صالة الطعام الخارجية بمطعم لومايا", desc: "تذوق نكهات محلية ممتازة أثناء الاستمتاع بالإطلالات البانورامية على الصحراء." },
-      es: { title: "Salón de Comedor Exterior Lummayya", desc: "Disfrute de sabores gourmet locales frente a vistas desérticas panorámicas." },
-      fr: { title: "Salon de Repas Extérieur Lummayya", desc: "Savourez des saveurs gastronomiques locales avec vue sur les panoramas désertiques." },
-      de: { title: "Lummayya Outdoor-Lounge", desc: "Genießen Sie exquisite lokale Aromen mit Blick auf das spektakuläre Wüstenpanorama." },
-      ja: { title: "ルフマヤ・屋外ダイニングサロン", desc: "広大な砂漠のパノラマビューを目の前に、地元の厳選素材を活かした極上グルメを。" }
-    }
+    translations: createTranslations("Lummayya Signature Plates", "A closer look at the restaurant's plated meals and desert dining presentation.")
+  },
+  {
+    id: "dining-3",
+    url: "/images/restaurant-lounge-day.jpeg",
+    category: "dining",
+    translations: createTranslations("Open-Air Lounge", "Layered seating around the restaurant creates a relaxed all-day desert lounge.")
+  },
+  {
+    id: "dining-4",
+    url: "/images/lummayya-night.jpeg",
+    category: "dining",
+    translations: createTranslations("Lummayya at Night", "The restaurant and terrace become a warm focal point once the desert cools down.")
+  },
+  {
+    id: "cosmos-1",
+    url: "/images/moonlit-lummayya.jpeg",
+    category: "cosmos",
+    translations: createTranslations("Moonlit Desert Sky", "Clouds, moonlight, and soft camp lighting frame the evening atmosphere.")
+  },
+  {
+    id: "cosmos-2",
+    url: "/images/restaurant-night-lounge.jpeg",
+    category: "cosmos",
+    translations: createTranslations("Night Lounge Glow", "The camp's night lighting turns the restaurant frontage into a desert stage set.")
+  },
+  {
+    id: "cosmos-3",
+    url: "/images/dome-suite-jacuzzi-night.jpeg",
+    category: "cosmos",
+    translations: createTranslations("Private Night Retreat", "A dome suite and jacuzzi under the open sky deliver the most intimate night experience.")
+  },
+  {
+    id: "cosmos-4",
+    url: "/images/sunset-disc.jpeg",
+    category: "cosmos",
+    translations: createTranslations("Sunset Disc Over Fayoum", "A close sunset study that captures the scale and stillness of the landscape.")
   }
 ];
 
@@ -187,7 +188,7 @@ export default function Gallery() {
       <div className="text-center max-w-2xl mx-auto space-y-3">
         <div className="inline-flex items-center gap-2 px-3 py-1 bg-desert-blue/10 border border-desert-blue/30 text-desert-blue font-mono text-[9px] uppercase tracking-widest font-bold rounded-full">
           <Camera className="w-3.5 h-3.5" />
-          <span>{language === "ar" ? "ألبوم الصور الحصري" : "REMAL PORTFOLIO"}</span>
+          <span>{language === "ar" ? "ألبوم الصور الحصري" : "PHOTO PORTFOLIO"}</span>
         </div>
         <h2 className="font-serif text-3xl md:text-5xl uppercase tracking-tighter text-desert-dark">
           {getGeneralText("title")}

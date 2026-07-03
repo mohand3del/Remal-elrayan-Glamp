@@ -212,7 +212,7 @@ export default function App() {
         </div>
 
         {/* Main Navigation Bar */}
-        <div className="py-4 px-4 md:px-12 flex flex-row justify-between items-center gap-4 transition-all duration-300">
+        <div className="py-5 md:py-6 px-4 md:px-12 flex flex-row justify-between items-center gap-4 transition-all duration-300">
           <div className="flex flex-col">
             <button 
               type="button"
@@ -220,10 +220,13 @@ export default function App() {
                 setActiveTab("home");
                 setIsMobileMenuOpen(false);
               }}
-              className="text-left font-serif text-lg lg:text-xl tracking-wider uppercase font-extrabold text-desert-dark hover:text-desert-blue transition-colors cursor-pointer flex items-center gap-2"
+              className="text-left cursor-pointer"
             >
-              <PalmTree className="text-desert-green shrink-0 animate-float-slow" size={24} color="#2E5A44" />
-              <span>REMAL EL RAYAN</span>
+              <img
+                src="/images/remal-logo-2.png"
+                alt="Glamp logo"
+                className="h-28 md:h-32 lg:h-36 xl:h-40 w-auto object-contain"
+              />
             </button>
             <span className="font-mono text-[9px] tracking-[0.25em] text-[#777] uppercase mt-0.5 flex items-center gap-1 lg:hidden">
               <span>Wadi El Rayan • Egypt</span>
@@ -400,7 +403,7 @@ export default function App() {
                   </div>
 
                   {/* Language Selection */}
-                  <div className="space-y-1.5 flex-1 relative">
+                  <div className="space-y-1.5 flex-1">
                     <span className="block font-mono text-[9px] uppercase tracking-widest text-[#777] font-bold">Language</span>
                     <button
                       type="button"
@@ -436,7 +439,7 @@ export default function App() {
                           initial={{ opacity: 0, y: 5 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 5 }}
-                          className="absolute left-0 right-0 mt-1.5 bg-white border-2 border-black shadow-[3px_3px_0px_rgba(0,0,0,1)] z-50 overflow-hidden divide-y divide-black/10 animate-fade-in"
+                          className="relative mt-1.5 max-h-56 overflow-y-auto bg-white border-2 border-black shadow-[3px_3px_0px_rgba(0,0,0,1)] z-50 divide-y divide-black/10 animate-fade-in"
                         >
                           {[
                             { code: "en", label: "English", short: "EN", flag: "🇬🇧" },
@@ -513,9 +516,11 @@ export default function App() {
                 <span className="font-mono text-[10px] tracking-widest text-desert-blue uppercase block mb-1.5 font-bold">
                   {t("established2021")}
                 </span>
-                <h1 className="font-serif text-4xl md:text-6xl uppercase tracking-tighter text-desert-dark">
-                  {language === "ar" ? "رمال الريان مخيم فاخر" : "REMAL EL RAYAN GLAMP"}
-                </h1>
+                <img
+                  src="/images/remal-logo-2.png"
+                  alt="Glamp logo"
+                  className="h-24 md:h-32 lg:h-36 w-auto object-contain"
+                />
                 <p className="font-sans text-xs text-desert-charcoal/70 max-w-2xl mt-3 leading-relaxed">
                   {t("glampDescription")}
                 </p>
@@ -602,9 +607,16 @@ export default function App() {
                 <span className="font-mono text-[10px] tracking-widest text-[#777] uppercase block font-bold">
                   {t("conceptPhilosophy")}
                 </span>
-                <h2 className="font-serif text-3xl uppercase tracking-tight text-desert-dark">
-                  Remal el Rayan: <br /><span className="text-desert-blue">{t("redefiningLuxuryTitle")}</span>
-                </h2>
+                <div className="space-y-3">
+                  <img
+                    src="/images/remal-logo-2.png"
+                    alt="Glamp logo"
+                    className="h-20 md:h-24 w-auto object-contain"
+                  />
+                  <h2 className="font-serif text-3xl uppercase tracking-tight text-desert-dark">
+                    <span className="text-desert-blue">{t("redefiningLuxuryTitle")}</span>
+                  </h2>
+                </div>
                 <p className="font-sans text-xs text-desert-charcoal/95 leading-relaxed">
                   {t("sandMeaning")}
                 </p>
@@ -1094,7 +1106,11 @@ export default function App() {
             
             {/* Fine Branding Column */}
             <div className="md:col-span-2 space-y-4">
-              <h3 className="font-serif text-2xl uppercase tracking-widest text-white">REMAL EL RAYAN</h3>
+              <img
+                src="/images/remal-logo-2.png"
+                alt="Glamp logo"
+                className="h-24 md:h-28 w-auto object-contain brightness-0 invert"
+              />
               <p className="font-sans text-xs text-[#aaa] max-w-sm leading-relaxed">
                 Egypt’s premier ultra-luxury wilderness dune glamp situated within the coordinates of the legendary Wadi El Rayan nature protectorate. Merging raw desert authenticity with silent boutique hospitality.
               </p>
@@ -1205,7 +1221,7 @@ export default function App() {
           {/* Subheader and credits */}
           <div className="border-t border-white/5 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center">
             <p className="font-mono text-[9px] tracking-widest text-[#555] uppercase">
-              © 2026 REMAL EL RAYAN GLAMPING INC. ALL RIGHTS RESERVED. EGYPT STATE TOURISM PORTAL.
+              © 2026 ALL RIGHTS RESERVED. EGYPT STATE TOURISM PORTAL.
             </p>
             <p className="font-mono text-[9px] tracking-widest text-[#555] uppercase">
               DEVELOPED TO SPECIFICATION FOR GOOGLE AI STUDIO IN EGYPT.

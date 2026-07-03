@@ -10,7 +10,7 @@ export default function DesertExperiences() {
       title: "Lummayya Dining Ritual",
       subTitle: "FINE BOTANICAL DESERT GASTRONOMY",
       description: "An open-air culinary theatre beneath raw Fayoum starlight. Merging slow-cooked organic Egyptian roots with modern progressive plating curated by international master chefs.",
-      imageUrl: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1250&q=80",
+      imageUrl: "/images/campfire-night.jpeg",
       duration: "3 Hours Custom Service",
       timeOfDay: "Evening / Nightfall"
     },
@@ -19,7 +19,7 @@ export default function DesertExperiences() {
       title: "Sand Dune Meditation",
       subTitle: "SILENT SANDS SOUND THERAPY",
       description: "Traverse high-cresting sand formations on private sand-caravans or luxury vehicles. At peak sunset, experience deep-vibration sound therapy using authentic ancient sound bells.",
-      imageUrl: "https://images.unsplash.com/photo-1547234935-80c7145ec969?auto=format&fit=crop&w=2000&q=80",
+      imageUrl: "/images/team-building.jpeg",
       duration: "2 Hours Private Journey",
       timeOfDay: "Golden Hour Sunset"
     },
@@ -28,7 +28,7 @@ export default function DesertExperiences() {
       title: "Wadi El Rayan Lakes Voyage",
       subTitle: "THE MAGIC WATER ELEMENT",
       description: "Sail across Egypt's ancient serene desert lakes on raw wooden dhow boats or high-end kayaks. Spot rare migratory birds nesting along the golden marsh reeds.",
-      imageUrl: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80",
+      imageUrl: "/images/boardwalk-lake-view.jpeg",
       duration: "4 Hours Expedition",
       timeOfDay: "Sunrise / Mid-Day"
     },
@@ -37,7 +37,7 @@ export default function DesertExperiences() {
       title: "Anomalous Horizon Stargazing",
       subTitle: "COSMIC COCKTAILS DECK ACCESS",
       description: "Sip custom botanical infusions on our scientific launch pad. Guided by professional astronomers operating dual tracking coordinates onto the Saturn rings and distant nebulas.",
-      imageUrl: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=1200&q=80",
+      imageUrl: "/images/moonlit-lummayya.jpeg",
       duration: "As Long as Desired",
       timeOfDay: "Nightlong Cosmos"
     }

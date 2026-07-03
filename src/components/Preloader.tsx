@@ -158,9 +158,11 @@ export default function Preloader({ onComplete, forceShow = false }: PreloaderPr
             transition={{ delay: 0.2 }}
             className="mb-2"
           >
-            <h1 className="font-serif text-2xl uppercase tracking-wider text-desert-dark mb-1">
-              {t("brandName")}
-            </h1>
+            <img
+              src="/images/remal-logo-2.png"
+              alt="Glamp logo"
+              className="h-24 md:h-28 w-auto object-contain mx-auto mb-2"
+            />
             <p className="font-mono text-[10px] tracking-widest text-[#777] uppercase">
               {t("brandSubtitle")}
             </p>

@@ -35,7 +35,7 @@ export default function ExperienceHub() {
       arabicName: "سفاري الجيب (رحلة قصيرة)",
       price: "3,500 EGP",
       duration: "1.5 - 2 Hours",
-      image: "https://images.unsplash.com/photo-1547234935-80c7145ec969?auto=format&fit=crop&w=600&q=80",
+      image: "/images/jeep-safari.jpeg",
       description: "Traverse high-voltage golden crest dunes and premium sand valleys around Wadi El Rayan's ancient landmarks. Optional air-conditioned vehicle is available for an additional 500 EGP."
     },
     {
@@ -43,7 +43,7 @@ export default function ExperienceHub() {
       arabicName: "سفاري الجيب (رحلة طويلة)",
       price: "4,000 EGP",
       duration: "3 - 4 Hours",
-      image: "https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=600&q=80",
+      image: "/images/jeep-safari-long-route.jpeg",
       description: "Deep desert exploration traversing Magic Lake, fossil valleys, and cinematic high dune sunset summits. Optional air-conditioned vehicle is available for an additional 500 EGP."
     },
     {
@@ -51,7 +51,7 @@ export default function ExperienceHub() {
       arabicName: "جلسة الكهف الملحى",
       price: "400 EGP",
       duration: "45 Mins",
-      image: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=600&q=80",
+      image: "/images/salt-cave.jpeg",
       description: "Relaxing wellness dry inhalation within crystalline Siwan rock salt caves, ideal for natural respiratory detox."
     },
     {
@@ -59,7 +59,7 @@ export default function ExperienceHub() {
       arabicName: "ورشة صناعة الفخار",
       price: "300 EGP",
       duration: "1 Hour",
-      image: "https://images.unsplash.com/photo-1565192647048-f997ded87958?auto=format&fit=crop&w=600&q=80",
+      image: "/images/pottery-workshop.jpeg",
       description: "Handicraft molding sessions taught directly by native master artisans from Tunis pottery village."
     },
     {
@@ -67,7 +67,7 @@ export default function ExperienceHub() {
       arabicName: "ركوب الخيل",
       price: "300 EGP",
       duration: "1 Hour",
-      image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80",
+      image: "/images/horse-riding.jpeg",
       description: "Scenic desert lakeside horse treks. An editorial sunset pacing along Fayoum's soft waters."
     }
   ];
@@ -285,7 +285,7 @@ export default function ExperienceHub() {
 
               <div className="lg:col-span-5 relative min-h-[300px] border-4 border-black p-2 bg-white">
                 <img 
-                  src="https://images.unsplash.com/photo-1533619239203-3a78cfd298bb?auto=format&fit=crop&w=800&q=80" 
+                  src="/images/transport-car.jpeg"
                   alt="Glamping desert transport vehicle context"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover"
@@ -305,7 +305,7 @@ export default function ExperienceHub() {
             >
               <div className="lg:col-span-5 border-4 border-black p-2 bg-white aspect-[4/3] overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800&q=80" 
+                  src="/images/team-building.jpeg"
                   alt="High-end corporate team building workspace outdoors"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-700"
@@ -322,13 +322,6 @@ export default function ExperienceHub() {
                 <p className="font-sans text-neutral-600 text-xs leading-relaxed">
                   {t("corporateOutingsDesc")}
                 </p>
-
-                <div className="space-y-3.5 border-l-2 border-[#C8B9A6] pl-4">
-                  <div className="text-xs font-sans">
-                    <span className="font-mono text-[10px] font-bold block text-black">{t("exclusiveRetreatCapabilities")}:</span>
-                    <span className="text-neutral-600">{t("exclusiveRetreatCapabilitiesDesc")}</span>
-                  </div>
-                </div>
 
                 <div className="pt-4">
                   <a
@@ -389,7 +382,7 @@ export default function ExperienceHub() {
 
               <div className="lg:col-span-5 relative min-h-[350px] border-4 border-black p-2 bg-white">
                 <img 
-                  src="https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=800&q=80" 
+                  src="/images/wedding-setup.jpeg"
                   alt="High fashion wedding dinner table under glowing desert lights"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover"

@@ -12,7 +12,6 @@ interface MenuItem {
 
 interface MenuSection {
   category: string;
-  infoNote?: string;
   items: MenuItem[];
 }
 
@@ -25,230 +24,177 @@ export default function LummayyaMenu({ nationality, currency }: LummayyaMenuProp
   const [activeTab, setActiveTab] = useState("Breakfast & Specialties");
   const EXCHANGE_RATE = 50.0;
 
-  const formatPrice = (usdPrice: number) => {
+  const tabVisuals: Record<string, { src: string; alt: string }[]> = {
+    "Breakfast & Specialties": [
+      { src: "/images/lummayya-food-plating.jpeg", alt: "Lummayya signature dishes" },
+      { src: "/images/restaurant-lounge-day.jpeg", alt: "Lummayya restaurant daytime seating" },
+      { src: "/images/lummayya-night.jpeg", alt: "Lummayya restaurant by night" }
+    ],
+    "Orientals & Delicacies": [
+      { src: "/images/lummayya-food-plating.jpeg", alt: "Oriental and grilled dishes" },
+      { src: "/images/restaurant-night-lounge.jpeg", alt: "Night restaurant lounge" },
+      { src: "/images/restaurant-lounge-day.jpeg", alt: "Restaurant lounge and seating" }
+    ],
+    "Quick bites & Pasta": [
+      { src: "/images/lummayya-food-plating.jpeg", alt: "Quick bites and plated meals" },
+      { src: "/images/restaurant-lounge-day.jpeg", alt: "Restaurant indoor and outdoor lounge" },
+      { src: "/images/lummayya-night.jpeg", alt: "Restaurant atmosphere at night" }
+    ],
+    "Sides, Salads & Desserts": [
+      { src: "/images/lummayya-food-plating.jpeg", alt: "Salads and side dishes presentation" },
+      { src: "/images/restaurant-night-lounge.jpeg", alt: "Restaurant night dining mood" },
+      { src: "/images/restaurant-lounge-day.jpeg", alt: "Daytime restaurant seating" }
+    ]
+  };
+
+  const formatPrice = (egpPrice: number) => {
     if (currency === "USD" || nationality === "non-egyptian") {
-      return `$${usdPrice} USD`;
+      return `$${Math.round(egpPrice / EXCHANGE_RATE)} USD`;
     }
-    return `${(usdPrice * EXCHANGE_RATE).toLocaleString()} EGP`;
+    return `${egpPrice.toLocaleString()} EGP`;
   };
 
   const menuData: Record<string, MenuSection[]> = {
     "Breakfast & Specialties": [
       {
-        category: "Bedouin Breakfast",
+        category: "Traditional Breakfast",
         items: [
-          {
-            name: "Bedouin Breakfast",
-            price: 10,
-            details: "Foul Eskandrani or Tehena with lemon and oil, White cheese with tomato, Two eggs of your choice, Tameya, Feteer, Honey, Molasses and tehena, Fayoumi bread."
+          { 
+            name: "Bedouin Breakfast Set", 
+            price: 325, 
+            details: "Foul (Eskandrani) or (Tehena + lemon + oil), White cheese with tomato, Two Eggs of your choice, Tameya, Feteer, Honey, Molasses and tehena, Fayoumi Bread. (Extras Available: Pastrami +50 EGP, Sausage +50 EGP, Yogurt +35 EGP)" 
           }
         ]
       },
       {
-        category: "House Specialties",
-        infoNote: "Mandi cooking time for Chicken & Duck is 3 hours. Mandi cooking time for Short Ribs & Goat is 5 hours.",
+        category: "Mandi Oven Specialties (Slow Fire Cooking)",
         items: [
-          {
-            name: "Half Mandi Bedouin Chicken",
-            price: 20,
-            details: "Served with Egyptian rice with sheriah, mulukhiyah, baladi salad, baba ghanoug, tumeya and dakous.",
-            notes: "Cooking time: 3 hours required"
+          { 
+            name: "Half Mandi Bedouin Chicken", 
+            price: 450, 
+            details: "Served with Egyptian rice with sheriah, mulukhiyah, baladi salad, baba ghanoug, and 2 dipping sauces (tumeya and dakous).", 
+            notes: "Cooking time: 3 hours required" 
           },
-          {
-            name: "Half Mandi Bedouin Duck",
-            price: 25,
-            details: "Served with Basmati rice with our oriental Bedouin touch, musakaa, roasted vegetables, baladi salad, harisa and tehena.",
-            notes: "Cooking time: 3 hours required"
+          { 
+            name: "Half Mandi Bedouin Duck", 
+            price: 700, 
+            details: "Served with Basmati rice with our oriental bedouin touch, musakaa, roasted veggies, baladi salad, and 2 dipping sauces (harisa and tehina).", 
+            notes: "Cooking time: 3 hours required" 
           },
-          {
-            name: "Quarter Mandi Bedouin Goat",
-            price: 100,
-            details: "Served with Egyptian rice, mulukhiyah, musakaa, roasted vegetables, baladi salad, baba ghanoug, tumeya, harisa, dakous and pesto.",
-            notes: "Cooking time: 5 hours required"
+          { 
+            name: "Quarter Mandi Bedouin Goat", 
+            price: 3800, 
+            details: "Served with Egyptian rice, mulukhiyah, muskak'a, roasted vegetables, baladi salad, baba ghanoug, and 2 dipping sauces of each (tumeya, harisa, dakous, and pesto).", 
+            notes: "Serves 3-5 guests • Cooking time: 5 hours required" 
           },
-          {
-            name: "Half Mandi Bedouin Goat",
-            price: 165,
-            details: "Served with Egyptian rice, mulukhiyah, musakaa, roasted vegetables, baladi salad, baba ghanoug, tumeya, harisa, dakous and pesto.",
-            notes: "Cooking time: 5 hours required"
-          },
-          {
-            name: "Short Ribs",
-            price: 40,
-            details: "Slow cooked in the Mandi oven over firewood for a rich smoky flavor. Served with Basmati rice, roasted vegetables, pesto dipping sauce and harisa.",
-            notes: "Price per Kilogram • Cooking time: 5 hours required"
+          { 
+            name: "Short Ribs (On Firewood)", 
+            price: 1400, 
+            details: "Perfectly cooked in the Mandi oven on firewood, giving it a very special smokey taste. Served with 2 Basmati rice, roasted veggies, our infamous pesto dipping sauce, and harisa paste.", 
+            notes: "Price per Kilogram • Minimum weight 1500g • Cooking time: 5 hours required" 
           }
         ]
       }
     ],
-    "Delicacies & Pasta": [
+    "Orientals & Delicacies": [
+      {
+        category: "House Orientals",
+        items: [
+          { name: "Oriental Platter", price: 1200, details: "An elite selection of traditional items, designed for group sharing." },
+          { name: "Tajine Grape Leaves with Trotters", price: 350, details: "Rich and slow-cooked grape leaves topped with tender beef trotters." },
+          { name: "Tajine Okra with Meat", price: 240, details: "Deliciously spiced local okra cooked with tender meat." },
+          { name: "Hawawshi", price: 240, details: "Traditional Egyptian spiced minced meat baked inside fresh crispy bread." },
+          { name: "Roz Maamer", price: 170, details: "Creamy baked rice made with rich local milk and baked in clay pots." },
+          { name: "Mombar", price: 140, details: "Spiced rice-stuffed beef sausage deep fried to golden perfection." }
+        ]
+      },
       {
         category: "House Delicacies",
         items: [
-          {
-            name: "Beef Tenderloin with Mushroom Sauce",
-            price: 30,
-            details: "Served with mashed potatoes and roasted vegetables or sautéed green beans."
+          { 
+            name: "Beef Tenderloin", 
+            price: 850, 
+            details: "Served with mashed potatoes and roasted veggies or sauteed green beans with rich sauce." 
           },
-          {
-            name: "Beef Medallions",
-            price: 25,
-            details: "Served with mashed potatoes and sautéed green beans."
+          { 
+            name: "Beef Medallions", 
+            price: 750, 
+            details: "Juicy and tender rounded beef cuts. Served with mashed potatoes and sauteed green beans." 
           },
-          {
-            name: "Braised Oxtail Akawi",
-            price: 25,
-            details: "Slow cooked with caramelized onions and served with rice."
+          { 
+            name: "Shrimp", 
+            price: 750, 
+            details: "Your choice of Grilled, Fried, or Butterfly Shrimps. Served with green rice and Tartar or Butterfly dipping sauce." 
           },
-          {
-            name: "Stuffed Pigeon",
-            price: 25,
-            details: "Two stuffed pigeons served with rice and French fries."
+          { 
+            name: "Stuffed Pigeon Pair", 
+            price: 700, 
+            details: "A pair of stuffed pigeons with rice, pan-fried with butter, and served with French fries." 
           },
-          {
-            name: "Quail",
-            price: 20,
-            details: "Two quails cooked with julienne onions and a touch of lemon. Served with French fries or Basmati rice."
+          { 
+            name: "Braised Oxtail", 
+            price: 650, 
+            details: "Slowly cooked, tender fall-off-the-bone meat with caramelized onions." 
           },
-          {
-            name: "Shrimps",
-            price: 25,
-            details: "Grilled, Fried or Butterfly. Served with green rice and tartar or butterfly sauce."
-          }
-        ]
-      },
-      {
-        category: "Pasta",
-        items: [
-          {
-            name: "Spaghetti Bolognese",
-            price: 20,
-            details: "Served with Parmesan cheese."
-          },
-          {
-            name: "Mebakbaka",
-            price: 20,
-            details: "Tiny pasta rings cooked in light red sauce with diced beef tenderloin."
-          },
-          {
-            name: "Penne Alfredo Chicken",
-            price: 15,
-            details: "Served with Parmesan cheese."
-          },
-          {
-            name: "Purple Spaghetti",
-            price: 15,
-            details: "Served with Hawaiian sweet chicken sauce."
-          },
-          {
-            name: "Linguine with Red Sauce",
-            price: 10,
-            details: "Served with fresh basil and Parmesan cheese."
-          },
-          {
-            name: "Linguine with White Sauce",
-            price: 10,
-            details: "Served with Parmesan cheese."
+          { 
+            name: "Quail Pair", 
+            price: 550, 
+            details: "A pair of quails, cooked with Julian onions with a lemon twist." 
           }
         ]
       }
     ],
-    "Quick bites & Sides": [
+    "Quick bites & Pasta": [
       {
-        category: "Quick n Delic",
+        category: "Quick & Delicious Bites",
         items: [
-          {
-            name: "Smash Burger Single",
-            price: 15,
-            details: "Prepared with cheese, caramelized onions, pickles, tomatoes and mayo. Served with French fries."
-          },
-          {
-            name: "Smash Burger Double",
-            price: 20,
-            details: "Prepared with cheese, caramelized onions, pickles, tomatoes and mayo. Served with French fries."
-          },
-          {
-            name: "Boerewors",
-            price: 15,
-            details: "Served with colored peppers and julienne onions."
-          },
-          {
-            name: "Fried Chicken Tenders",
-            price: 15,
-            details: "Served with French fries and sweet chili sauce."
-          },
-          {
-            name: "Breaded Chicken Rolls",
-            price: 15,
-            details: "Stuffed with mozzarella cheese. Served with French fries and tumeya."
-          },
-          {
-            name: "Chicken Butter Lemon",
-            price: 15,
-            details: "Two chicken breast fillets served with Bedouin style Basmati rice."
-          },
-          {
-            name: "Shish Tawook",
-            price: 15,
-            details: "Served with French fries and tumeya."
-          }
+          { name: "Sojok Swirl", price: 500, details: "A swirl of sausage with an authentic taste of Fayoumy spices, served with colored peppers and Julian onions." },
+          { name: "Chicken Butter Lemon", price: 400, details: "Two chicken breast fillets served with basmati rice with a bedouin touch." },
+          { name: "Chicken Curry", price: 400, details: "Sautéed chicken cooked in our delicious local curry sauce." },
+          { name: "Breaded Chicken Rolls", price: 320, details: "Breaded crumb chicken rolls stuffed with mozzarella cheese. Served with French fries and tumeya dipping sauce." },
+          { name: "Smash Burger Single", price: 240, details: "Prepared with cheese, caramelized onions, pickles, tomatoes, and mayo. Served with French fries." },
+          { name: "Smash Burger Double", price: 290, details: "Prepared with cheese, caramelized onions, pickles, tomatoes, and mayo. Served with French fries." },
+          { name: "Fried Chicken Tenders", price: 280, details: "Served with French fries and sweet chili dipping sauce." },
+          { name: "Shish Tawook", price: 280, details: "Served with French fries and tumeya dipping sauce." }
         ]
       },
       {
-        category: "Side Dishes",
+        category: "Pasta & Spaghetti",
         items: [
-          { name: "Tajine Okra with Meat and Rice", price: 7 },
-          { name: "Roz Maamar", price: 5 },
-          { name: "Mombar", price: 5 },
-          { name: "Rice with Mulukhiyah", price: 3 },
-          { name: "Basmati Rice with Bedouin Touch", price: 3 },
-          { name: "Mosaka with Fayoumi Bread", price: 3 },
-          { name: "Roasted Vegetables", price: 2 },
-          { name: "Sambousak", price: 2 },
-          { name: "French Fries", price: 2 },
-          { name: "Mashed Potatoes", price: 2 }
-        ]
-      },
-      {
-        category: "Salads & Dips",
-        items: [
-          { name: "Baba Ghanoug", price: 1 },
-          { name: "Baladi Salad", price: 1 },
-          { name: "Tumeya", price: 1 },
-          { name: "Tehena", price: 1 },
-          { name: "Harisa", price: 1 },
-          { name: "Dakous", price: 1 },
-          { name: "Parmesan Cheese", price: 1 }
+          { name: "Mebakbaka", price: 280, details: "Tiny pasta rings cooked in a light red sauce with small diced beef Tenderloins." },
+          { name: "Spaghetti Bolognese", price: 270, details: "Served with rich meat sauce and parmesan cheese." },
+          { name: "Penne Alfredo Chicken", price: 250, details: "Served with rich white cream sauce and parmesan cheese." },
+          { name: "Pasta with White Sauce", price: 180, details: "Classic pasta served with rich white sauce and herbs." },
+          { name: "Pasta with Red Sauce", price: 160, details: "Classic pasta served with fresh tomato red sauce and basil." }
         ]
       }
     ],
-    "Dessert": [
+    "Sides, Salads & Desserts": [
       {
-        category: "Dessert",
+        category: "Sides & Salads",
         items: [
-          {
-            name: "Batata Brûlée",
-            price: 10,
-            details: "Sweet potato brûlée with crunchy honeycomb."
-          },
-          {
-            name: "Om Ali",
-            price: 10,
-            details: "Puff pastry baked in hot full cream milk with nuts, served fresh from the oven."
-          },
-          {
-            name: "Apples & Dates Fokharah Cake",
-            price: 10,
-            details: "New"
-          },
-          {
-            name: "Fruit Platter",
-            price: 10
-          },
-          {
-            name: "Waffles",
-            price: 10
-          }
+          { name: "Greek Salad", price: 170, details: "Crisp cucumbers, tomatoes, red onions, feta cheese, and olives." },
+          { name: "Sautéed Vegetables", price: 150, details: "Lightly seasoned fresh seasonal vegetables sautéed in butter." },
+          { name: "Soup of the Day", price: 100, details: "Ask about our chef's daily special hot soup." },
+          { name: "Mosaka", price: 90, details: "Traditional baked eggplant and bell pepper casserole with rich sauce." },
+          { name: "Basmati Rice", price: 80, details: "Seasoned basmati rice cooked with bedouin aromatics." },
+          { name: "Mulukhiyah", price: 70, details: "Authentic Egyptian green jute leaf broth with garlic and coriander." },
+          { name: "French Fries", price: 65, details: "Golden crispy potato fries." },
+          { name: "Mashed Potatoes", price: 65, details: "Creamy whipped potatoes with butter and seasoning." },
+          { name: "Egyptian Rice", price: 60, details: "Traditional Egyptian white rice." },
+          { name: "Roasted Veggies", price: 60, details: "Seasonal wood-fired roasted vegetables." },
+          { name: "Dips & Baladi Salads (Tomeya, Tehena, Harisa, or Dakous)", price: 35, details: "Flavorful traditional dipping sauces and side salads. 35 LE each." }
+        ]
+      },
+      {
+        category: "Sweet Endings (Desserts)",
+        items: [
+          { name: "Om Ali", price: 150, details: "Puff pastry baked in hot full cream milk, finished with a dash of nuts." },
+          { name: "Apples Fokharah Cake", price: 150, details: "Warm apples pot cake baked in traditional pottery ovens." },
+          { name: "Waffles", price: 140, details: "Warm crispy waffles served with sweet chocolate syrup or honey." },
+          { name: "Pancake", price: 140, details: "Fluffy breakfast pancakes served with maple syrup or sweet honey." },
+          { name: "Sweet Potato Bites", price: 120, details: "Roasted sweet potato bites accompanied by caramel drizzle." },
+          { name: "Fruit Platter", price: 85, details: "Selection of fresh seasonal oasis fruits." }
         ]
       }
     ]
@@ -353,6 +299,21 @@ export default function LummayyaMenu({ nationality, currency }: LummayyaMenuProp
         })}
       </div>
 
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        {(tabVisuals[activeTab] || []).map((visual, index) => (
+          <div
+            key={`${activeTab}-${index}`}
+            className="aspect-[4/3] overflow-hidden border-2 border-black bg-[#faf9f6] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+          >
+            <img
+              src={visual.src}
+              alt={visual.alt}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ))}
+      </div>
+
       {/* Interactive Menu Items Display */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
         {menuData[activeTab].map((section, sIdx) => (
@@ -363,13 +324,6 @@ export default function LummayyaMenu({ nationality, currency }: LummayyaMenuProp
                 <span>{section.category}</span>
               </h4>
             </div>
-
-            {section.infoNote && (
-              <div className="bg-amber-50/80 border-l-4 border-amber-500 p-3 text-[11px] text-amber-900 font-sans leading-relaxed">
-                <strong className="uppercase tracking-wider text-[9px] block mb-1 text-amber-800">Note:</strong>
-                {section.infoNote}
-              </div>
-            )}
 
             <div className="space-y-4">
               {section.items.map((item, itemIdx) => (
@@ -400,16 +354,11 @@ export default function LummayyaMenu({ nationality, currency }: LummayyaMenuProp
         ))}
       </div>
 
-      <div className="bg-desert-blue-light border border-desert-blue/40 p-4 mt-8 flex flex-col space-y-2 text-xs">
-        <div className="flex items-start space-x-2">
-          <Flame className="w-4 h-4 text-desert-blue mt-0.5 flex-shrink-0" />
-          <p className="font-sans text-[11px] text-[#444] leading-relaxed">
-            <strong className="text-black uppercase">PRE-ORDER MANDATES:</strong> To guarantee absolute peak quality of slow-fire items (including Mandi Poultry and Lamb ribs), clients are requested to send preferred choices <strong className="text-black">at least 1 day prior</strong> to arrival.
-          </p>
-        </div>
-        <div className="border-t border-desert-blue/20 pt-2 text-[11px] font-sans text-neutral-500 italic">
-          Note: All prices are exclusive of taxes and service charges.
-        </div>
+      <div className="bg-desert-blue-light border border-desert-blue/40 p-4 mt-8 flex items-start space-x-2 text-xs">
+        <Flame className="w-4 h-4 text-desert-blue mt-0.5 flex-shrink-0" />
+        <p className="font-sans text-[11px] text-[#444] leading-relaxed">
+          <strong className="text-black uppercase">PRE-ORDER MANDATES:</strong> To guarantee absolute peak quality of slow-fire items (including Mandi Poultry and Lamb ribs), clients are requested to send preferred choices <strong className="text-black">at least 1 day prior</strong> to arrival.
+        </p>
       </div>
     </div>
   );
