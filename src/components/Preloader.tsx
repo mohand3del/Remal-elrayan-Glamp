@@ -159,7 +159,7 @@ export default function Preloader({ onComplete, forceShow = false }: PreloaderPr
             className="mb-2"
           >
             <img
-              src="/images/remal-logo-2.png"
+              src="/images/logo.svg"
               alt="Glamp logo"
               className="h-24 md:h-28 w-auto object-contain mx-auto mb-2"
             />

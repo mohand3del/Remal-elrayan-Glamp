@@ -733,7 +733,7 @@ export default function LummayyaBooking({
   const triggerImageSim = () => {
     setUploadProgress(true);
     setTimeout(() => {
-      setUploadedReceipt("/images/remal-logo-2.png");
+      setUploadedReceipt("/images/logo.svg");
       setUploadProgress(false);
     }, 1200);
   };

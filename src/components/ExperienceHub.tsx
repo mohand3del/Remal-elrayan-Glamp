@@ -251,7 +251,10 @@ export default function ExperienceHub() {
                     </div>
                     <div className="border-t border-black/5 pt-4 mt-4 flex justify-between items-baseline">
                       <span className="font-mono text-sm font-bold">2,700 EGP</span>
-                      <span className="font-mono text-[8px] text-neutral-400">Cairo-to-Camp</span>
+                      <span className="font-mono text-[8px] text-neutral-400 text-right leading-tight">
+                        Cairo-to-Camp
+                        <span className="block">One Way</span>
+                      </span>
                     </div>
                   </div>
 

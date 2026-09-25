@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Compass, Sparkles, MapPin, Phone, Mail, Instagram, ArrowDown, ChevronRight, Wind, Star, Linkedin, ChevronDown, Globe, Menu, X } from "lucide-react";
+import { Compass, Sparkles, MapPin, Phone, Mail, Instagram, ArrowDown, Wind, Star, Linkedin, ChevronDown, Globe } from "lucide-react";
 import { useLanguage, Language } from "./LanguageContext";
 
 // Import custom components
@@ -29,7 +29,6 @@ export default function App() {
   const [nationality, setNationality] = useState<"egyptian" | "non-egyptian">("egyptian");
   const [currency, setCurrency] = useState<"EGP" | "USD">("EGP");
   const [isLangDropdownOpen, setIsLangDropdownOpen] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Close dropdown on click outside
   useEffect(() => {
@@ -212,20 +211,19 @@ export default function App() {
         </div>
 
         {/* Main Navigation Bar */}
-        <div className="py-5 md:py-6 px-4 md:px-12 flex flex-row justify-between items-center gap-4 transition-all duration-300">
+        <div className="py-5 md:py-6 px-4 md:px-12 flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4 transition-all duration-300">
           <div className="flex flex-col">
             <button 
               type="button"
               onClick={() => {
                 setActiveTab("home");
-                setIsMobileMenuOpen(false);
               }}
               className="text-left cursor-pointer"
             >
               <img
-                src="/images/remal-logo-2.png"
+                src="/images/logo.svg"
                 alt="Glamp logo"
-                className="h-28 md:h-32 lg:h-36 xl:h-40 w-auto object-contain"
+                className="h-20 md:h-24 lg:h-28 xl:h-32 w-auto min-w-[220px] object-contain"
               />
             </button>
             <span className="font-mono text-[9px] tracking-[0.25em] text-[#777] uppercase mt-0.5 flex items-center gap-1 lg:hidden">
@@ -233,8 +231,8 @@ export default function App() {
             </span>
           </div>
 
-          {/* Enhanced Responsive Navigation Tabs (Desktop Only) */}
-          <nav className="hidden lg:flex gap-2 justify-center items-center">
+          {/* Enhanced Responsive Navigation Tabs */}
+          <nav className="flex w-full lg:w-auto gap-2 justify-start lg:justify-center items-center overflow-x-auto pb-1 lg:pb-0 [-webkit-overflow-scrolling:touch]">
             {[
               { id: "home", label: t("home"), num: "01" },
               { id: "accommodations", label: t("accommodations"), num: "02" },
@@ -270,7 +268,7 @@ export default function App() {
                   type="button"
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as any)} 
-                  className={`relative px-4 py-2 font-mono text-[10px] tracking-widest uppercase font-extrabold transition-all duration-300 cursor-pointer border-2 ${
+                  className={`relative shrink-0 px-3 md:px-4 py-2 font-mono text-[10px] tracking-widest uppercase font-extrabold transition-all duration-300 cursor-pointer border-2 whitespace-nowrap ${
                     isSelected 
                       ? "text-white border-black shadow-[3px_3px_0px_rgba(0,0,0,1)] translate-x-[-1px] translate-y-[-1px]" 
                       : "bg-[#F4EFE3] text-[#333] border-black/10 hover:border-black hover:bg-white"
@@ -291,235 +289,22 @@ export default function App() {
               );
             })}
           </nav>
-
-          {/* Mobile Hamburger Toggle Button */}
-          <button
-            type="button"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="lg:hidden p-2.5 border-2 border-black bg-[#F4EFE3] hover:bg-white text-black shadow-[2px_2px_0px_rgba(0,0,0,1)] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer z-50 flex items-center justify-center"
-            aria-label="Toggle mobile menu"
-          >
-            {isMobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
-          </button>
         </div>
       </header>
-
-      {/* Mobile Navigation Drawer Overlay */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="lg:hidden bg-[#F4EFE3] border-b-2 border-black overflow-hidden sticky top-[62px] z-30 shadow-brutalist"
-          >
-            <div className="px-6 py-6 flex flex-col gap-6">
-              {/* Mobile Menu Navigation Items */}
-              <div className="flex flex-col gap-2">
-                {[
-                  { id: "home", label: t("home"), num: "01" },
-                  { id: "accommodations", label: t("accommodations"), num: "02" },
-                  { id: "restaurant", label: t("restaurant"), num: "03" },
-                  { id: "experiences", label: t("experiences"), num: "04" },
-                  { id: "gallery", label: (() => {
-                    const labels: Record<string, string> = {
-                      en: "Gallery",
-                      ar: "معرض الصور",
-                      es: "Galería",
-                      fr: "Galerie",
-                      de: "Galerie",
-                      ja: "ギャラリー"
-                    };
-                    return labels[language] || labels.en;
-                  })(), num: "05" },
-                  { id: "policies", label: t("policies"), num: "06" },
-                  { id: "booking-guide", label: (() => {
-                    const labels: Record<string, string> = {
-                      en: "Booking Guide",
-                      ar: "دليل الحجز",
-                      es: "Guía de Reserva",
-                      fr: "Guide de Réservation",
-                      de: "Buchungsleitfaden",
-                      ja: "予約ガイド"
-                    };
-                    return labels[language] || labels.en;
-                  })(), num: "07" }
-                ].map((tab, idx) => {
-                  const isSelected = activeTab === tab.id;
-                  return (
-                    <motion.button
-                      initial={{ opacity: 0, x: -10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: idx * 0.05 }}
-                      type="button"
-                      key={tab.id}
-                      onClick={() => {
-                        setActiveTab(tab.id as any);
-                        setIsMobileMenuOpen(false);
-                      }}
-                      className={`w-full flex items-center justify-between px-4 py-3 border-2 font-mono text-[11px] tracking-widest uppercase font-bold transition-all ${
-                        isSelected
-                          ? "bg-black text-white border-black shadow-[3px_3px_0px_rgba(0,0,0,1)]"
-                          : "bg-white text-[#333] border-black/15 hover:border-black"
-                      }`}
-                    >
-                      <div className="flex items-center">
-                        <span className={`text-[10px] mr-2.5 font-bold ${isSelected ? "text-desert-blue" : "text-desert-blue/80"}`}>{tab.num}.</span>
-                        <span>{tab.label}</span>
-                      </div>
-                      <ChevronRight size={14} className={isSelected ? "text-desert-blue animate-pulse" : "text-black/30"} />
-                    </motion.button>
-                  );
-                })}
-              </div>
-
-              {/* Mobile Selectors Section (Nationality, Language, Weather, Replay) */}
-              <div className="border-t border-black/15 pt-5 space-y-4">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                  {/* Nationality Toggle */}
-                  <div className="space-y-1.5 flex-1">
-                    <span className="block font-mono text-[9px] uppercase tracking-widest text-[#777] font-bold">Nationality</span>
-                    <div className="flex items-center bg-white border-2 border-black p-0.5 shadow-[2px_2px_0px_rgba(0,0,0,1)] text-[10px]">
-                      <button
-                        type="button"
-                        onClick={() => setNationality("egyptian")}
-                        className={`flex-1 px-3 py-1 font-mono uppercase tracking-wider cursor-pointer font-bold transition-all text-center ${
-                          nationality === "egyptian" ? "bg-black text-white" : "text-black hover:bg-neutral-100"
-                        }`}
-                      >
-                        🇪🇬 {language === "ar" ? "مصرى" : "EGY"}
-                      </button>
-                      <button
-                        type="button"
-                        onClick={() => setNationality("non-egyptian")}
-                        className={`flex-1 px-3 py-1 font-mono uppercase tracking-wider cursor-pointer font-bold transition-all text-center ${
-                          nationality === "non-egyptian" ? "bg-black text-white" : "text-black hover:bg-neutral-100"
-                        }`}
-                      >
-                        🌐 {language === "ar" ? "أجنبى" : "INT"}
-                      </button>
-                    </div>
-                  </div>
-
-                  {/* Language Selection */}
-                  <div className="space-y-1.5 flex-1">
-                    <span className="block font-mono text-[9px] uppercase tracking-widest text-[#777] font-bold">Language</span>
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setIsLangDropdownOpen((prev) => !prev);
-                      }}
-                      className="w-full flex items-center justify-between bg-white border-2 border-black px-3 py-1.5 text-[10px] font-mono font-bold uppercase tracking-wider cursor-pointer shadow-[2px_2px_0px_rgba(0,0,0,1)] hover:bg-neutral-100 transition-all select-none"
-                    >
-                      {(() => {
-                        const currentLang = [
-                          { code: "en", label: "English", short: "EN", flag: "🇬🇧" },
-                          { code: "ar", label: "العربية", short: "AR", flag: "🇪🇬" },
-                          { code: "es", label: "Español", short: "ES", flag: "🇪🇸" },
-                          { code: "fr", label: "Français", short: "FR", flag: "🇫🇷" },
-                          { code: "de", label: "Deutsch", short: "DE", flag: "🇩🇪" },
-                          { code: "ja", label: "日本語", short: "JA", flag: "🇯🇵" },
-                          { code: "el", label: "Ελληνικά", short: "EL", flag: "🇬🇷" }
-                        ].find((l) => l.code === language) || { code: "en", label: "English", short: "EN", flag: "🇬🇧" };
-                        return (
-                          <div className="flex items-center gap-1.5">
-                            <span className="text-[12px]">{currentLang.flag}</span>
-                            <span>{currentLang.label} ({currentLang.short})</span>
-                          </div>
-                        );
-                      })()}
-                      <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isLangDropdownOpen ? "rotate-180" : ""}`} />
-                    </button>
-
-                    <AnimatePresence>
-                      {isLangDropdownOpen && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 5 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: 5 }}
-                          className="relative mt-1.5 max-h-56 overflow-y-auto bg-white border-2 border-black shadow-[3px_3px_0px_rgba(0,0,0,1)] z-50 divide-y divide-black/10 animate-fade-in"
-                        >
-                          {[
-                            { code: "en", label: "English", short: "EN", flag: "🇬🇧" },
-                            { code: "ar", label: "العربية", short: "AR", flag: "🇪🇬" },
-                            { code: "es", label: "Español", short: "ES", flag: "🇪🇸" },
-                            { code: "fr", label: "Français", short: "FR", flag: "🇫🇷" },
-                            { code: "de", label: "Deutsch", short: "DE", flag: "🇩🇪" },
-                            { code: "ja", label: "日本語", short: "JA", flag: "🇯🇵" },
-                            { code: "el", label: "Ελληνικά", short: "EL", flag: "🇬🇷" }
-                          ].map((langObj) => {
-                            const isSelected = language === langObj.code;
-                            return (
-                              <button
-                                key={langObj.code}
-                                type="button"
-                                onClick={() => {
-                                  setLanguage(langObj.code as Language);
-                                  setIsLangDropdownOpen(false);
-                                }}
-                                className={`w-full flex items-center justify-between px-3 py-2 text-left font-mono text-[9px] tracking-wider cursor-pointer font-bold transition-colors ${
-                                  isSelected 
-                                    ? "bg-black text-white" 
-                                    : "text-black hover:bg-neutral-100"
-                                }`}
-                              >
-                                <div className="flex items-center gap-1.5">
-                                  <span className="text-[11px]">{langObj.flag}</span>
-                                  <span>{langObj.label}</span>
-                                </div>
-                                {isSelected && (
-                                  <span className="w-1.5 h-1.5 bg-white rounded-full" />
-                                )}
-                              </button>
-                            );
-                          })}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                </div>
-
-                <div className="flex items-center justify-between pt-2">
-                  {/* Real-time Weather Display */}
-                  <div className="flex flex-col gap-1">
-                    <span className="block font-mono text-[9px] uppercase tracking-widest text-[#777] font-bold">Weather</span>
-                    <WeatherWidget />
-                  </div>
-
-                  {/* Replay preloader */}
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setIsMobileMenuOpen(false);
-                      handleReplayPreloader();
-                    }}
-                    className="font-mono text-[9px] tracking-widest bg-black text-[#F4EFE3] hover:bg-[#c8b9a6] hover:text-black px-3.5 py-2 uppercase border-2 border-black cursor-pointer shadow-[2px_2px_0px_rgba(0,0,0,1)] transition-all flex items-center gap-1.5 font-bold"
-                  >
-                    <Sparkles className="w-3 h-3 text-[#c8b9a6]" />
-                    <span>{t("replay")}</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {activeTab === "home" && (
         <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 space-y-16">
           {/* 1. Cinematic Branded Header */}
           <ScrollReveal delay={0.1}>
-            <div className="border-b-2 border-black pb-8 flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div className="border-b-2 border-black pb-8 flex flex-col md:flex-row md:items-start justify-between gap-6">
               <div>
                 <span className="font-mono text-[10px] tracking-widest text-desert-blue uppercase block mb-1.5 font-bold">
                   {t("established2021")}
                 </span>
                 <img
-                  src="/images/remal-logo-2.png"
-                  alt="Glamp logo"
-                  className="h-24 md:h-32 lg:h-36 w-auto object-contain"
+                  src="/images/home-intro-glamp.jpeg"
+                  alt="Remal el Rayan glamp at night"
+                  className="w-full max-w-2xl aspect-video object-cover border-2 border-black shadow-brutalist"
                 />
                 <p className="font-sans text-xs text-desert-charcoal/70 max-w-2xl mt-3 leading-relaxed">
                   {t("glampDescription")}
@@ -609,9 +394,9 @@ export default function App() {
                 </span>
                 <div className="space-y-3">
                   <img
-                    src="/images/remal-logo-2.png"
+                    src="/images/logo.svg"
                     alt="Glamp logo"
-                    className="h-20 md:h-24 w-auto object-contain"
+                    className="h-20 md:h-24 lg:h-28 w-auto object-contain"
                   />
                   <h2 className="font-serif text-3xl uppercase tracking-tight text-desert-dark">
                     <span className="text-desert-blue">{t("redefiningLuxuryTitle")}</span>
@@ -1107,9 +892,9 @@ export default function App() {
             {/* Fine Branding Column */}
             <div className="md:col-span-2 space-y-4">
               <img
-                src="/images/remal-logo-2.png"
+                src="/images/logo.svg"
                 alt="Glamp logo"
-                className="h-24 md:h-28 w-auto object-contain brightness-0 invert"
+                className="h-20 md:h-24 w-auto object-contain brightness-0 invert"
               />
               <p className="font-sans text-xs text-[#aaa] max-w-sm leading-relaxed">
                 Egypt’s premier ultra-luxury wilderness dune glamp situated within the coordinates of the legendary Wadi El Rayan nature protectorate. Merging raw desert authenticity with silent boutique hospitality.
